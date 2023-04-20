@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <center>
+
+       
+      <head>
+        <head>
+
+            <center>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+        <style>
+            h1 
+            {
+                 color:rgba(11, 147, 4, 0.893);
+            }
+            h2
+            {
+              font-size:20px;
+            }
+            h3{
+              font-size:20px
+            }
+            h4{
+              font-size:20px;
+            }
+            h5{
+              font-size:20px;
+            }
+            h6{
+              font-size:20px;
+            }
+            .navbar {
+                        height: 30px;
+                        width: auto;
+                        background-color: rgb(185, 194, 212);
+        }
+            .navbar li 
+            {
+                        color: rgb(191, 170, 170);
+                        margin-left: 10px;
+                        font-weight: bold;
+        
+                        
+        
+        
+            }
+            
+        </style>
+            </head>
+            <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        
+                      </div>
+                      <ul class="nav navbar-nav">
+                        <li><a href="/home" >Calculator</a></li>
+                        <li><a href="/getinfo">Back</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+            
+        
+        <h1> Welcome to Payment</h1><hr>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>PayPal Standard Payments Integration | Client Demo</title>
+      </head>
+
+      <body>
+        <p style="font-size:20px">Customer Photo</p>
+        <img src="data:;base64,{{ new_data.rendered_data1 }}" width="150px" height="150px"></img><br>
+        <br><h2>Customer ID</h2>
+        <p style="font-size:15px">{{new_data.cusid}}</p><hr>
+<h3>Name</h3>
+<p style="font-size:15px">{{new_data.username}}</p><hr>
+ <h4>Door Number</h4>
+<p style="font-size:15px">{{new_data.houseno}}</p><hr>
+<h5>Address</h5>
+<p style="font-size:15px">{{new_data.address}}</p><hr>
+<h6>Amount</h6>
+<p style="font-size:15px">{{new_data.amount}}</p><hr>
+
+        <div id="paypal-button-container"></div>
+        <!-- Sample PayPal credentials (client-id) are included -->
+        <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+        <script>
+          const paypalButtonsComponent = paypal.Buttons({
+              // optional styling for buttons
+              // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
+              style: {
+                color: "gold",
+                shape: "rect",
+                layout: "vertical"
+              },
+
+              // set up the transaction
+              createOrder: (data, actions) => {
+                  // pass in any options from the v2 orders create call:
+                  // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
+                  const createOrderPayload = {
+                      purchase_units: [
+                          {
+                              amount: {
+                                  value: "{{new_data.amount}}"
+                              }
+                          }
+                      ]
+                  };
+                  return actions.order.create(createOrderPayload);
+              },
+
+              // finalize the transaction
+              onApprove: (data, actions) => {
+                  const captureOrderHandler = (details) => {
+                      const payerName = details.payer.name.given_name;
+              
+                      
+                      console.log('Transaction completed');
+                  
+                      window.location.href="/continue/{{new_data.cusid}}";
+
+                      return redirect(url_for('/continue/<string:cusid'))
+                      new_data.amount=0
+                      // return actions.order.capture().then(captureOrderHandler);
+                  };
+
+                 return actions.order.capture().then(captureOrderHandler);
+              },
+
+              // handle unrecoverable errors
+              onError: (err) => {
+                
+                console.error('An error prevented the buyer from checking out with PayPal');
+                // alert("transatc is  failed  due to server busy");
+                // console.error("trasation fail");
+                //  window.location.href="/fail";
+
+              }
+          });
+
+          paypalButtonsComponent
+              .render("#paypal-button-container")
+              .catch((err) => {
+                  console.error('PayPal Buttons failed to render');
+              });
+        </script>
+      </body>
+    </center>
+    </html>

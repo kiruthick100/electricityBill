@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../static/style1.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<center>
+		<!-- {% with messages = get_flashed_messages(with_categories=true) %} {% if
+			messages %} {% for category, message in messages %} {% if category ==
+			'error' %}
+			<div class="alert alert-danger alter-dismissable fade show" role="alert">
+			 <span>{{ message }}</span>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">x</span>
+			  </button>
+			</div>
+			{% else %}
+			<div class="alert alert-success alter-dismissable fade show" role="alert">
+
+			  <span>{{ message }}</span>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">x</span>
+			  </button>
+			</div>
+			{% endif %} {% endfor %} {% endif %} {% endwith %} -->
+		</center>
+		<div class="register">
+			<h1>signup</h1>
+			<div class="links">
+				<a href="/login">Login</a>
+				<a href="/sigup" class="active">Signup</a>
+			</div>
+			<form  method="POST">
+				
+                <input type="text" id="email" name="email" placeholder="Email"><br><br>
+                <input type="text" id="uname" name="uname" placeholder="Username"><br><br>
+                <input type="text" id="fname" name="fname" placeholder="Fname"><br><br>
+                <input type="text" id="lname" name="lname" placeholder="Lname"><br><br>
+                <input type="password" id="password1" name="password1" placeholder="password"><br><br>
+                <input type="password" id="password2" name="password2" placeholder="Reenter"><br><br>
+                <input type="submit" name="" value="signup">
+            </form>
+		</div>
+	</body>
+</html>

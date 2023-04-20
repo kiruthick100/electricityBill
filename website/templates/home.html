@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+    <center>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Login</title>
+            <link rel="stylesheet" href="../static/style1.css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        </head>
+        <body>
+            <div class="login">
+                <h1>Home</h1>
+                <div class="links">
+                    <a href="/home" class="active">calulator</a>
+                    <a href="/getinfo">payment</a>
+                    <a href="/logout">logout</a>
+                </div>
+
+    <body>
+        
+        <h1> ELECTRICITY CALULATOR </h1>
+
+          <form action="/home" method="POST">
+             
+            <select name="languages" id="languages">
+                <option value="Tamilnadu">Tamilnadu</option>
+                <option value="kerala">Kerala</option>
+                <option value="karnadaka">Karnataka</option>
+                <option value="Andhara">Andhara Pradesh</option>
+                <option value="Andhara">Arunachal Pradesh</option>
+                <option value="Andhara">Assam</option>
+                <option value="Andhara">Bihar</option>
+                <option value="Andhara">Goa</option>
+                <option value="Andhara">Gujarat</option>
+                <option value="Andhara">Chhattisgarh</option>
+                <option value="Andhara">Haryana</option>
+                <option value="Andhara">Himachal Pradesh</option>
+                <option value="Andhara">Jharkhand</option>
+                <option value="Andhara">Madhya Pradesh</option>
+                <option value="Andhara">Maharashtra</option>
+                <option value="Andhara">Manipur</option>
+                <option value="Andhara">Meghalaya</option>
+                <option value="Andhara">Mizorom</option>
+                <option value="Andhara">Punjab</option>
+                <option value="Andhara">Jammu & Kashmir</option>
+                <option value="Andhara">Delhi</option>
+                <option value="Andhara">Telangana</option>
+                <option value="Andhara">Uttarakhand</option>
+                <option value="Andhara">Sikkim</option>
+                <option value="Andhara">Odisha</option>
+                <option value="Andhara">West Bengal</option><br><br><br>
+                <option value="Andhara">Rajasthan</option>
+                <option value="Andhara">Nagaland</option>
+                <option value="Andhara">Tripura</option>
+                <option value="Andhara">Uttar Pradesh</option>
+                <option value="Andhara">Puducherry</option>
+                <option value="Andhara">Ladakh</option>
+
+
+
+
+
+
+
+
+              <br></select> 
+              <div>
+            <input type ="number" name="pre" id="pre" placeholder="Previous">
+            <input type="number"  name='val' id="val" placeholder="Current"></div>
+            <br><br>
+            <!-- <button onclick="getvalue()">CALCULATE</button> -->
+            <input class="btn btn-success" type="submit" value="Calculate">
+        </form>
+        
+        
+        
+        {% if sites[0] != 0: %}
+        <h1>The amount = {{sites[0]}}</h1>
+            
+        {% endif %}
+        
+        
+
+<!-- 
+        <script>
+            function getvalue()
+            {
+                
+
+                var a=document.getElementById("a").value;
+
+                if(a<=100)
+
+                {
+
+                    document.writeln("free")
+                }
+                else if(a>100 && a<=200)
+                {
+                    var b=a-100
+                    document.write(a*2.5);
+
+                }
+
+                else if(a>200 && a<=350)
+                {
+                    var b=a-100;
+                    document.write(a*2.5);
+                }
+                else if(a>350 && a<=500)
+                {
+                    var b=a-100;
+                    document.write('your electircity amount'+a*5);
+                }
+                else
+                {
+                    var b=a-100;
+                    document.write(b*7);
+                }
+
+            }
+            
+        </script> -->
+    
+        
+
+    </body>
+    </center>
+</html>
